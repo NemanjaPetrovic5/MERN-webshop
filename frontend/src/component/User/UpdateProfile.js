@@ -11,7 +11,7 @@ import MetaData from "../layout/MetaData";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Home/Navbar";
 
-const UpdateProfile = ({ history }) => {
+const UpdateProfile = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate();
@@ -31,7 +31,9 @@ const UpdateProfile = ({ history }) => {
 
     myForm.set("name", name);
     myForm.set("email", email);
-    myForm.set("avatar", avatar);
+    if(avatar !== undefined){
+      myForm.set("avatar", avatar);
+    }
     dispatch(updateProfile(myForm));
   };
 
@@ -70,7 +72,7 @@ const UpdateProfile = ({ history }) => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, alert, history, user, isUpdated]);
+  }, [dispatch, error, alert, user, isUpdated]);
   return (
     <Fragment>
       {loading ? (

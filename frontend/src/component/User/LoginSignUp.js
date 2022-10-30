@@ -51,7 +51,9 @@ const LoginSignUp = () => {
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("password", password);
-    myForm.set("avatar", avatar);
+    if(avatar !== "/Profile.png"){
+      myForm.set("avatar", avatar);
+    } 
     dispatch(register(myForm));
   };
 

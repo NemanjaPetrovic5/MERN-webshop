@@ -8,7 +8,12 @@ const cloudinary = require("cloudinary");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+  // const { avatar, name, email, password } = req.body;
+
+  const avatar = req.body.avatar;
+  if (avatar !== undefined) {
+
+  const myCloud = await cloudinary.v2.uploader.upload(avatar, {
     folder: "avatars",
     width: 150,
     crop: "scale",
@@ -27,6 +32,22 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   });
 
   sendToken(user, 201, res);
+} else{
+  const { name, email, password } = req.body;
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+    avatar: {
+      public_id: "Profile.png",
+      url: "Profile.png",
+    },
+  });
+
+  sendToken(user, 201, res);
+}
+
 });
 
 
@@ -181,7 +202,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     email: req.body.email,
   };
 
-  if (req.body.avatar !== "") {
+  if (req.body.avatar !== undefined) {
     const user = await User.findById(req.user.id);
 
     const imageId = user.avatar.public_id;
