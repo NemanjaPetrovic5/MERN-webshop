@@ -53,8 +53,6 @@ const Shipping = () => {
       dispatch(clearErrors());
     }
 
- 
-
   }, [dispatch, error, alert ]);
 
   return (

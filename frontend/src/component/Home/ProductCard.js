@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@material-ui/lab";
 
-const Bootstrap = ({ product }) => {
+const ProductCard = ({ product }) => {
     const options = {
         value: product.ratings,
         readOnly: true,
@@ -32,4 +32,4 @@ const Bootstrap = ({ product }) => {
   );
 };
 
-export default Bootstrap;
+export default ProductCard;

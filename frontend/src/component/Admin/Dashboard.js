@@ -8,14 +8,10 @@ import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
 import MetaData from "../layout/MetaData";
-import {Chart, ArcElement} from 'chart.js'
 import { Col, Row } from "reactstrap";
-
 import DashboardCards from "../Admin/dashboard/DashboardCards";
 import UserOptions from "../layout/Header/UserOptions";
 
-
-Chart.register(ArcElement);
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
@@ -51,7 +47,6 @@ const Dashboard = () => {
 
        <div className="dashboardContainer">
         <Typography component="h1">Dashboard</Typography>
-
 
         <Row>
         <Col sm="6" lg="12" className="totalAmount">
@@ -96,18 +91,9 @@ const Dashboard = () => {
           />
         </Link>
         </Col>
-        
       </Row>
-      {/* <SalesChart/> */}
-
-        {/* <div className="doughnutChart">
-          <Doughnut data={doughnutState} />
-        </div> */}
-       
       </div>
     </div>
-
-    
   );
 };
 

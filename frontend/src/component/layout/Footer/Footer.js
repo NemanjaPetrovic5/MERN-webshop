@@ -20,7 +20,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="http://blog.creative-tim.com/?ref=pkr-footer"
+                  href="https://nemanjapetrovic.me"
                   target="_blank"
                   rel="noreferrer"
                 >
